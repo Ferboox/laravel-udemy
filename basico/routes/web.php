@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/test', [TestController::class, 'test']);
+
+
+Route::get('/contacto', function () {
+    return view('contacto');
+})->name('contacto');
+
+
+Route::get('/custom', function(){
+    $message = "Mensaje desde web.php";
+
+    return view('custom', ['message' => $message]);
 });
